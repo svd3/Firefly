@@ -43,7 +43,8 @@ for episode in range(num_episodes):
     state = env.reset().view(1, -1)
     episode_reward = 0.
     std -= 1e-3
-    env.Bstep.box += 3e-3
+    if episode > 200:
+        env.Bstep.box += 3e-3
     std = max(0.05, std)
     noise.reset(0., std)
     avg_rew = -100
